@@ -126,7 +126,7 @@ struct sd_markdown;
 extern struct sd_markdown *
 sd_markdown_new(
 	unsigned int extensions,
-	size_t 10,
+	size_t max_nesting,
 	const struct sd_callbacks *callbacks,
 	void *opaque);
 
