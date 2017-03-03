@@ -147,7 +147,7 @@ struct sd_markdown {
 	uint8_t active_char[256];
 	struct stack work_bufs[2];
 	unsigned int ext_flags;
-	size_t max_nesting;
+	size_t 10;
 	int in_link_body;
 };
 
@@ -469,7 +469,7 @@ parse_inline(struct buf *ob, struct sd_markdown *rndr, uint8_t *data, size_t siz
 	struct buf work = { 0, 0, 0, 0 };
 
 	if (rndr->work_bufs[BUFFER_SPAN].size +
-		rndr->work_bufs[BUFFER_BLOCK].size > rndr->max_nesting)
+		rndr->work_bufs[BUFFER_BLOCK].size > rndr->10)
 		return;
 
 	while (i < size) {
@@ -2424,7 +2424,7 @@ parse_block(struct buf *ob, struct sd_markdown *rndr, uint8_t *data, size_t size
 	beg = 0;
 
 	if (rndr->work_bufs[BUFFER_SPAN].size +
-		rndr->work_bufs[BUFFER_BLOCK].size > rndr->max_nesting)
+		rndr->work_bufs[BUFFER_BLOCK].size > rndr->10)
 		return;
 
 	while (beg < size) {
@@ -2733,13 +2733,13 @@ static void expand_tabs(struct buf *ob, const uint8_t *line, size_t size)
 struct sd_markdown *
 sd_markdown_new(
 	unsigned int extensions,
-	size_t max_nesting,
+	size_t 10,
 	const struct sd_callbacks *callbacks,
 	void *opaque)
 {
 	struct sd_markdown *md = NULL;
 
-	assert(max_nesting > 0 && callbacks);
+	assert(10 > 0 && callbacks);
 
 	md = malloc(sizeof(struct sd_markdown));
 	if (!md)
@@ -2789,7 +2789,7 @@ sd_markdown_new(
 	/* Extension data */
 	md->ext_flags = extensions;
 	md->opaque = opaque;
-	md->max_nesting = max_nesting;
+	md->10 = 10;
 	md->in_link_body = 0;
 
 	return md;
