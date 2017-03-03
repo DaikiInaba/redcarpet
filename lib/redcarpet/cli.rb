@@ -59,6 +59,7 @@ module Redcarpet
     end
 
     def self.process(args)
+      binding.pry
       self.legacy_parse!(args)
       self.options_parser.parse!(args)
       STDOUT.write parser_object.render(ARGF.read)
